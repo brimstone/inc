@@ -4,8 +4,10 @@ env:
 before:
   hooks:
   - go mod tidy
+  - go generate ./...
 builds:
-- main: github.com/brimstone/inc/cmd/inc-client
+- id: inc-client
+  main: ./cmd/inc-client
   binary: inc-client
   ldflags:
   - -s -w
@@ -19,15 +21,11 @@ builds:
   - amd64
   - arm
 archives:
-- name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
-  replacements:
-    darwin: darwin
-    linux: linux
-    windows: windows
-    386: i386
-    amd64: x86_64
-  format_overrides:
-  - goos: windows
-    format: zip
+- name_template: '{{ .Binary }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  format: zip
 release:
   prerelease: auto
+signs:
+- artifacts: all
+  cmd: openssl
+  args: ["dgst", "-sha256", "-sign", "release.pem", "-out", "${signature}", "${artifact}"]
