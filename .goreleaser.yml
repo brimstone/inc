@@ -5,7 +5,7 @@ before:
   hooks:
     - go mod tidy
 builds:
-  - main: cmd/inc-client
+  - main: github.com/brimstone/inc/cmd/inc-client
     binary: inc-client
     ldflags:
       - -s -w
