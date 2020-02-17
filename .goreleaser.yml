@@ -25,6 +25,44 @@ builds:
   - linux
   - darwin
   - windows
+- id: incd
+  main: ./cmd/incd
+  binary: incd
+  ldflags:
+  - -s -w
+  - -X github.com/brimstone/inc/pkg/version.Version={{.Version}}
+  env:
+  - CGO_ENABLED=0
+  goarm:
+  - "6"
+  goarch:
+  - 386
+  - amd64
+  - arm
+  - arm64
+  goos:
+  - linux
+  - darwin
+  - windows
+- id: inc
+  main: ./cmd/inc
+  binary: inc
+  ldflags:
+  - -s -w
+  - -X github.com/brimstone/inc/pkg/version.Version={{.Version}}
+  env:
+  - CGO_ENABLED=0
+  goarm:
+  - "6"
+  goarch:
+  - 386
+  - amd64
+  - arm
+  - arm64
+  goos:
+  - linux
+  - darwin
+  - windows
 archives:
 - name_template: '{{ .Binary }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
   format: zip

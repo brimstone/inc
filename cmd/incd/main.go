@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	clientCmd "github.com/brimstone/inc/cmd/inc-client/cmd"
+	serverCmd "github.com/brimstone/inc/cmd/incd/cmd"
 	"github.com/brimstone/inc/pkg/cmd"
 	"github.com/brimstone/inc/pkg/version"
 	"github.com/spf13/cobra"
@@ -12,12 +12,12 @@ import (
 
 func main() {
 
-	version.Binary = "inc-client"
+	version.Binary = "incd"
 	// rootCmd represents the base command when called without any subcommands
 	var rootCmd = &cobra.Command{
 		Use:   version.Binary,
-		Short: "Client for Inc",
-		Long:  `This is a client for an Inc server.`,
+		Short: "All in one inc binary",
+		Long:  `This is both a client and server for Inc.`,
 		// Uncomment the following line if your bare application
 		// has an action associated with it:
 		//	Run: func(cmd *cobra.Command, args []string) { },
@@ -34,8 +34,9 @@ func main() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
 	cmd.AddAll(rootCmd)
-	clientCmd.AddAll(rootCmd)
+	serverCmd.AddAll(rootCmd)
 	// Former Execute
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
