@@ -11,8 +11,7 @@ builds:
   binary: inc-client
   ldflags:
   - -s -w
-  - -X version.Version={{.Version}}
-  - -X version.Revision={{.ShortCommit}}
+  - -X github.com/brimstone/pkg/version.Version={{.Version}}
   env:
   - CGO_ENABLED=0
   goarm:

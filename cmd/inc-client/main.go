@@ -14,7 +14,9 @@
 
 package main
 
-import "github.com/brimstone/inc/cmd/inc-client/cmd"
+import (
+	"github.com/brimstone/inc/cmd/inc-client/cmd"
+)
 
 func main() {
 	cmd.Execute()
