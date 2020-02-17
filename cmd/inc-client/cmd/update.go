@@ -52,7 +52,16 @@ func init() {
 
 func update(cmd *cobra.Command, args []string) error {
 	v := semver.MustParse(version.Version)
-	latest, err := selfupdate.UpdateSelf(v, "brimstone/inc")
+	pubkey, err := version.PublicKey()
+	if err != nil {
+		return err
+	}
+	up, err := selfupdate.NewUpdater(selfupdate.Config{
+		Validator: &selfupdate.ECDSAValidator{
+			PublicKey: pubkey,
+		},
+	})
+	latest, err := up.UpdateSelf(v, "brimstone/inc")
 	if err != nil {
 		return err
 	}

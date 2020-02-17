@@ -10,7 +10,7 @@ inc is a simple program to test a few different software development practices
 
 ## Make signing key:
 ```
-openssl ecparam -genkey -name secp160k1 -noout -out release.pem
+openssl ecparam -genkey -name secp521r1 -noout -out release.pem
 openssl ec  -in release.pem -pubout -out release.pub
 ```
 
