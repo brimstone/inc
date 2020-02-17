@@ -11,8 +11,8 @@ builds:
   binary: inc-client
   ldflags:
   - -s -w
-  - -X main.Version={{.Version}}
-  - -X main.Revision={{.ShortCommit}}
+  - -X version.Version={{.Version}}
+  - -X version.Revision={{.ShortCommit}}
   env:
   - CGO_ENABLED=0
   goarm:
