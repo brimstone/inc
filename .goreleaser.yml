@@ -25,6 +25,9 @@ builds:
   - linux
   - darwin
   - windows
+  ignore:
+  - goos: darwin
+    goarch: 386
 - id: incd
   main: ./cmd/incd
   binary: incd
@@ -44,6 +47,9 @@ builds:
   - linux
   - darwin
   - windows
+  ignore:
+  - goos: darwin
+    goarch: 386
 - id: inc
   main: ./cmd/inc
   binary: inc
@@ -63,8 +69,22 @@ builds:
   - linux
   - darwin
   - windows
+  ignore:
+  - goos: darwin
+    goarch: 386
 archives:
-- name_template: '{{ .Binary }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+- id: inc
+  name_template: '{{ .Binary }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  builds:
+  - inc
+- id: inc-client
+  name_template: '{{ .Binary }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  builds:
+  - inc-client
+- id: incd
+  name_template: '{{ .Binary }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+  builds:
+  - incd
   format: zip
 release:
   prerelease: auto
