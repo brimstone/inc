@@ -18,3 +18,7 @@ openssl ec  -in release.pem -pubout -out release.pub
 - steal arg parsing from brimstone/jwt
 - test selfupdate function
 - Add updating to a specific version
+
+## Things I'm not happy with
+- The specific cmds (`cmd/inc/cmd`) and the common cmds (`pkg/cmd`).
+  1) `cmd` is how I want it, or `cobra` is what it is
