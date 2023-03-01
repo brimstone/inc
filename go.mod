@@ -9,11 +9,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/rhysd/go-github-selfupdate v1.2.3
 	github.com/sirupsen/logrus v1.8.1 // indirect
-	github.com/spf13/cast v1.4.0 // indirect
 	github.com/spf13/cobra v1.6.1
-	github.com/spf13/viper v1.8.1
+	github.com/spf13/viper v1.15.0
 	github.com/ulikunitz/xz v0.5.10 // indirect
-	golang.org/x/oauth2 v0.0.0-20210810183815-faf39c7919d5 // indirect
-	golang.org/x/text v0.3.8 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
 )
